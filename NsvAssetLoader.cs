@@ -23,6 +23,7 @@ namespace SliceVisualizer
                     if (!_loggedNoGlowMaterial)
                     {
                         _loggedNoGlowMaterial = true;
+                        Plugin.Log.Error("Trying to get GameUISprite before it was loaded. This should not happen.");
                     }
                     return null;
                 }
@@ -66,6 +67,7 @@ namespace SliceVisualizer
             using var stream = assembly.GetManifestResourceStream(resourcePath);
             if (stream == null)
             {
+                Plugin.Log.Warn($"Couldn't find embedded resource {resourcePath}");
                 return null;
             }
 
@@ -81,6 +83,8 @@ namespace SliceVisualizer
 
             var rect = new Rect(0, 0, texture.width, texture.height);
             var sprite = Sprite.Create(texture, rect, Vector2.zero, pixelsPerUnit);
+
+            // Plugin.Log.Info($"Successfully loaded sprite {resourcePath}, w={texture.width}, h={texture.height}");
 
             return sprite;
         }
