@@ -28,7 +28,7 @@ namespace SliceVisualizer
             zenject = zenjector;
             PluginConfig.Instance = conf.Generated<PluginConfig>();
             zenject.UseLogger(Log);
-            zenject.Install<NsvGameInstaller>(Location.GameCore);
+            zenject.Install<NsvGameInstaller>(Location.Singleplayer);
         }
 
         [OnEnable]
