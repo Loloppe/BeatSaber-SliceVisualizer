@@ -12,6 +12,7 @@ namespace SliceVisualizer.Configuration
     {
         internal static PluginConfig Instance = null!;
         public virtual bool Enabled { get; set; } = true;
+        public virtual float YPosition { get; set; } = 0f;
         public virtual float SliceWidth { get; set; } = 0.05f;
 
         [UseConverter(typeof(EnumConverter<ScoreScalingMode>))]

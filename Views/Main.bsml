@@ -1,5 +1,5 @@
-<vertical child-control-height='false'>
-    <horizontal horizontal-fit='PreferredSize' spacing='10'>
-        <checkbox-setting apply-on-change="true" value="Enabled" text="Enable"/>
-    </horizontal>
-</vertical>
+<settings-container>
+    <checkbox-setting apply-on-change="true" value="Enabled" text="Enable"/>
+    <slider-setting apply-on-change="true" value="YPosition" text="Y Position"
+                    min="-1" max="2" increment="0.05"/>
+</settings-container>

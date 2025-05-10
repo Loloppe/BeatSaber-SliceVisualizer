@@ -233,7 +233,7 @@ namespace SliceVisualizer.Core
                 const float positionScaling = 2.0f;
                 var position = noteController.noteTransform.position * positionScaling;
                 cubeX = position.x;
-                cubeY = position.y;
+                cubeY = position.y + PluginConfig.Instance.YPosition;
             }
             else
             {
