@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using SiraUtil.Tools;
 using UnityEngine;
 using Zenject;
 
@@ -9,8 +8,6 @@ namespace SliceVisualizer
 {
     internal class NsvAssetLoader : IInitializable, IDisposable
     {
-        private readonly SiraLog _siraLog;
-
         private Material? _uiNoGlowMaterial;
         private bool _loggedNoGlowMaterial = false;
 
@@ -20,13 +17,12 @@ namespace SliceVisualizer
                 {
                     return _uiNoGlowMaterial;
                 }
-                var sprite = Resources.FindObjectsOfTypeAll<Material>().FirstOrDefault(m => m.name == "GameUISprite");
+                var sprite = Resources.FindObjectsOfTypeAll<Material>().FirstOrDefault(m => m.name == "NoGlowNoFogSprite");
                 if (sprite is null)
                 {
                     if (!_loggedNoGlowMaterial)
                     {
                         _loggedNoGlowMaterial = true;
-                        _siraLog.Error("Trying to get GameUISprite before it was loaded. This should not happen.");
                     }
                     return null;
                 }
@@ -41,9 +37,9 @@ namespace SliceVisualizer
         public Sprite? Arrow { get; private set; }
         public Sprite? White { get; private set; }
 
-        public NsvAssetLoader(SiraLog siraLog)
+        public NsvAssetLoader()
         {
-            _siraLog = siraLog;
+            Initialize();
         }
 
         public void Initialize()
@@ -70,7 +66,6 @@ namespace SliceVisualizer
             using var stream = assembly.GetManifestResourceStream(resourcePath);
             if (stream == null)
             {
-                _siraLog.Warning($"Couldn't find embedded resource {resourcePath}");
                 return null;
             }
 
@@ -86,8 +81,6 @@ namespace SliceVisualizer
 
             var rect = new Rect(0, 0, texture.width, texture.height);
             var sprite = Sprite.Create(texture, rect, Vector2.zero, pixelsPerUnit);
-
-            _siraLog.Info($"Successfully loaded sprite {resourcePath}, w={texture.width}, h={texture.height}");
 
             return sprite;
         }

@@ -1,10 +1,5 @@
 <vertical child-control-height='false'>
     <horizontal horizontal-fit='PreferredSize' spacing='10'>
-        <checkbox-setting
-            preferred-width='60'
-            text='Enabled'
-            value='Enabled-value'
-            apply-on-change='true'
-            hover-hint='Enable SliceVisualizer' />
+        <checkbox-setting apply-on-change="true" value="Enabled" text="Enable"/>
     </horizontal>
 </vertical>

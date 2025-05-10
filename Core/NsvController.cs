@@ -1,20 +1,17 @@
 using System;
 using SliceVisualizer.Configuration;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Zenject;
 using HMUI;
 using BeatSaberMarkupLanguage.Tags;
 using BeatSaberMarkupLanguage.Components.Settings;
-using SiraUtil.Tools;
 
 namespace SliceVisualizer.Core
 {
     internal class NsvController : IInitializable, ITickable, IDisposable
     {
         private readonly PluginConfig _config;
-        private readonly SiraLog _logger;
         private readonly BeatmapObjectManager _beatmapObjectManager;
         private readonly NsvSlicedBlock[] _slicedBlockPool;
         private readonly Factories.NsvBlockFactory _blockFactory;
@@ -23,10 +20,9 @@ namespace SliceVisualizer.Core
 
         private static readonly int MaxItems = 12;
 
-        public NsvController(BeatmapObjectManager beatmapObjectManager, Factories.NsvBlockFactory blockFactory, SiraLog logger)
+        public NsvController(BeatmapObjectManager beatmapObjectManager, Factories.NsvBlockFactory blockFactory)
         {
             _config = PluginConfig.Instance;
-            _logger = logger;
             _beatmapObjectManager = beatmapObjectManager;
             _slicedBlockPool = new NsvSlicedBlock[MaxItems];
             _blockFactory = blockFactory;
@@ -52,7 +48,7 @@ namespace SliceVisualizer.Core
             }
             catch (Exception err)
             {
-                _logger.Info(string.Format("Cannot create checkbox: {0}", err));
+                Plugin.Log.Error(err);
             }
         }
 
@@ -118,7 +114,7 @@ namespace SliceVisualizer.Core
 
             var toggleSetting = toggleObject.GetComponent<ToggleSetting>();
             toggleSetting.Value = _config.Enabled;
-            toggleSetting.toggle.onValueChanged.AddListener(enabled => _config.Enabled = enabled);
+            toggleSetting.Toggle.onValueChanged.AddListener(enabled => _config.Enabled = enabled);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace SliceVisualizer.UI
             if (!Created)
             {
                 var menuButton = new MenuButton("SliceVisualizer", "Chase the perfect slice", ShowFlow);
-                MenuButtons.instance.RegisterButton(menuButton);
+                MenuButtons.Instance.RegisterButton(menuButton);
                 Created = true;
             }
         }

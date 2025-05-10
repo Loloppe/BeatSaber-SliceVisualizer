@@ -1,3 +1,5 @@
+using System.Reflection;
+using BeatSaberMarkupLanguage.GameplaySetup;
 using IPA;
 using IPA.Config;
 using IPA.Config.Stores;
@@ -13,23 +15,37 @@ namespace SliceVisualizer
     public class Plugin
     {
         internal static Logger Log = null!;
+        internal static Zenjector zenject = null!;
         /// <summary>
         /// Called when the plugin is first loaded by IPA (either when the game starts or when the plugin is enabled if it starts disabled).
         /// [Init] methods that use a Constructor or called before regular methods like InitWithConfig.
         /// Only use [Init] with one Constructor.
         /// </summary>
         [Init]
-        public void Init(Logger logger, Config conf, Zenjector zenject)
+        public void Init(Logger logger, Config conf, Zenjector zenjector)
         {
             Log = logger;
-            zenject.OnApp<NsvAppInstaller>().WithParameters(logger, conf.Generated<PluginConfig>());
-            zenject.OnGame<NsvGameInstaller>(false).ShortCircuitForTutorial();
+            zenject = zenjector;
+            PluginConfig.Instance = conf.Generated<PluginConfig>();
         }
 
-        [OnEnable, OnDisable]
-        public void OnStateChanged()
+        [OnEnable]
+        public void OnEnable()
         {
-            // Zenject is poggers
+            BeatSaberMarkupLanguage.Util.MainMenuAwaiter.MainMenuInitializing += MainMenuInit;
+        }
+
+        public void MainMenuInit()
+        {
+            GameplaySetup.Instance.AddTab("SliceVisualizer", "SliceVisualizer.Views.Main.bsml", PluginConfig.Instance, MenuType.All);
+            zenject.UseLogger(Log);
+            zenject.Install<NsvGameInstaller>(Location.GameCore);
+        }
+
+        [OnDisable]
+        public void OnDisable()
+        {
+            GameplaySetup.Instance.RemoveTab("SliceVisualizer");
         }
     }
 }
