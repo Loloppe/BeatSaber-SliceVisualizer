@@ -27,6 +27,8 @@ namespace SliceVisualizer
             Log = logger;
             zenject = zenjector;
             PluginConfig.Instance = conf.Generated<PluginConfig>();
+            zenject.UseLogger(Log);
+            zenject.Install<NsvGameInstaller>(Location.GameCore);
         }
 
         [OnEnable]
@@ -38,8 +40,6 @@ namespace SliceVisualizer
         public void MainMenuInit()
         {
             GameplaySetup.Instance.AddTab("SliceVisualizer", "SliceVisualizer.Views.Main.bsml", PluginConfig.Instance, MenuType.All);
-            zenject.UseLogger(Log);
-            zenject.Install<NsvGameInstaller>(Location.GameCore);
         }
 
         [OnDisable]

@@ -1,11 +1,12 @@
-using SliceVisualizer.Configuration;
+using JetBrains.Annotations;
 using SliceVisualizer.Core;
 using SliceVisualizer.Factories;
 using Zenject;
 
 namespace SliceVisualizer.Installers
 {
-    internal class NsvGameInstaller : Installer<NsvGameInstaller>
+    [UsedImplicitly]
+    internal class NsvGameInstaller : Installer
     {
         public NsvGameInstaller()
         {
