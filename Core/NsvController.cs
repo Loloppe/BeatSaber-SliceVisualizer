@@ -95,7 +95,7 @@ namespace SliceVisualizer.Core
 
         public void CreateCheckbox()
         {
-            var canvas = GameObject.Find("Wrapper/StandardGameplay/PauseMenu/Wrapper/MenuWrapper/Canvas").GetComponent<Canvas>();
+            var canvas = GameObject.Find("Wrapper/StandardGameplay/PauseMenu/Wrapper/MenuWrapper/Canvas")?.GetComponent<Canvas>();
             if (!canvas)
             {
                 return;
