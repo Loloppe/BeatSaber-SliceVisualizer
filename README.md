@@ -16,6 +16,11 @@ Edit `Beat Saber\UserData\SliceVizualizer.json`.
 This file will be created automatically when you first launch the game with the plugin installed.
 
 ### Configuration options:
+#### In game menu
+- `Enabled` (default: true) -- Enable or disable the plugin
+- `YPosition` (default: 1.0) -- Can be used to change the Y position (height) of the visualizer.
+
+#### File only
 - `SliceWidth` (default: 0.05) -- Width of the slice line as a proportion of note size
 - `ScoreScaling` (default: `"Linear"`) -- Specify scaling function for cut offset. Possible values: `"Linear", "Log", "Sqrt"`.
 This option, when set to `Log` or `Sqrt` allows you to exaggerate small offsets, and group large offsets together.
