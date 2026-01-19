@@ -37,7 +37,7 @@ namespace SliceVisualizer
 
         public void MainMenuInit()
         {
-            GameplaySetup.Instance.AddTab("SliceVisualizer", "SliceVisualizer.Views.Main.bsml", PluginConfig.Instance, MenuType.All);
+            GameplaySetup.Instance.AddTab("SliceVisualizer", "SliceVisualizer.Views.Main.bsml", PluginConfig.Instance, MenuType.Solo);
         }
 
         [OnDisable]
