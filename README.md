@@ -2,25 +2,18 @@
 
 This plugin shows how your slice is offset from center.
 Using that information, you can train your accuracy.
+Does not work in multiplayer.
 
 Demo: https://www.youtube.com/watch?v=mrq-uZ2JnXg
 
-## Installation
-
-- Install BSIPA and SiraUtil, recommended way is to use [Beat Saber Mod Assistant][mod_assistant]
-- Copy SliceVisualizer.dll to `Beat Saber\Plugins` directory.
-
 ## Configuration
+
+In-game menu to enable/disable or change Y position.
 
 Edit `Beat Saber\UserData\SliceVizualizer.json`.
 This file will be created automatically when you first launch the game with the plugin installed.
 
 ### Configuration options:
-#### In game menu
-- `Enabled` (default: true) -- Enable or disable the plugin
-- `YPosition` (default: 1.0) -- Can be used to change the Y position (height) of the visualizer.
-
-#### File only
 - `SliceWidth` (default: 0.05) -- Width of the slice line as a proportion of note size
 - `ScoreScaling` (default: `"Linear"`) -- Specify scaling function for cut offset. Possible values: `"Linear", "Log", "Sqrt"`.
 This option, when set to `Log` or `Sqrt` allows you to exaggerate small offsets, and group large offsets together.
@@ -49,33 +42,3 @@ Set to 0.0 to disable this effect.
 - `CanvasOffset` (default: `[0.0, 0.0, 16.0]`) -- control `[x, y, z]` position of bottom center point of the visualization canvas.  
 `x` is left to right, `y` is bottom to top, `z` is back to front.
 - `CanvasScale` (default: 1.0) -- Control visualization canvas scaling. This affects note scaling as well.
-
-## Setting up Development
-
-Please read the [BSMT Wiki][bsmt_wiki] for more information on plugin development for BeatSaber.
-
-In case you have troubles with setting up paths or references, please read:
-[BSMT Wiki - Resolving References][bsmt_wiki_ref]
-
-To develop this plugin, you'll need:
-
-- Visual Studio 2019
-- Beat Saber installed
-- BSIPA and SiraUtil installed in Beat Saber directory, recommended way is to use [Beat Saber Mod Assistant][mod_assistant]
-- Recommended to install Visual Studio extension `BeatSaberModdingTools.vsix` from [here][bsmg_tools_vsix]
-
-Next:
-
-- Clone this repo `git clone git@github.com:m1el/BeatSaber-SliceVisualizer.git`
-- Copy `SliceVisualizer.csproj.user.example` to `SliceVisualizer.csproj.user`
-- Edit `SliceVisualizer.csproj.user` to set your Beat Saber installation directory
-- Build Solution
-
-## LICENSE
-
-The MIT License, copyright Igor null \<m1el.2027@gmail.com\>
-
-[bsmt_wiki]: https://github.com/Zingabopp/BeatSaberModdingTools/wiki "Beat Saber Modding Tools Wiki"
-[bsmt_wiki_ref]: https://github.com/Zingabopp/BeatSaberModdingTools/wiki/Resolving-References "Beat Saber Modding Tools Wiki - Resolving References"
-[mod_assistant]: https://github.com/Assistant/ModAssistant/releases/latest "Beat Saber Mod Assistant latest release"
-[bsmg_tools_vsix]: https://github.com/Zingabopp/BeatSaberModdingTools/releases/latest "Beat Saber Modding tools Visual Studio extension"
