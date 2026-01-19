@@ -1,19 +1,21 @@
 # Beat Saber Slice Visualizer mod
 
-This plugin shows how your slice is offset from center.
-Using that information, you can train your accuracy.
-Does not work in multiplayer.
+This plugin shows how your slice is offset from center.  
+Using that information, you can train your accuracy.  
+Does not work in multiplayer.  
 
 Demo: https://www.youtube.com/watch?v=mrq-uZ2JnXg
 
 ## Configuration
 
-In-game menu to enable/disable or change Y position.
-
 Edit `Beat Saber\UserData\SliceVizualizer.json`.
 This file will be created automatically when you first launch the game with the plugin installed.
 
 ### Configuration options:
+#### In game menu
+- `Enabled` (default: true) -- Enable or disable the plugin
+- `YPosition` (default: 1.0) -- Can be used to change the Y position (height) of the visualizer.  
+#### File only
 - `SliceWidth` (default: 0.05) -- Width of the slice line as a proportion of note size
 - `ScoreScaling` (default: `"Linear"`) -- Specify scaling function for cut offset. Possible values: `"Linear", "Log", "Sqrt"`.
 This option, when set to `Log` or `Sqrt` allows you to exaggerate small offsets, and group large offsets together.
@@ -42,3 +44,4 @@ Set to 0.0 to disable this effect.
 - `CanvasOffset` (default: `[0.0, 0.0, 16.0]`) -- control `[x, y, z]` position of bottom center point of the visualization canvas.  
 `x` is left to right, `y` is bottom to top, `z` is back to front.
 - `CanvasScale` (default: 1.0) -- Control visualization canvas scaling. This affects note scaling as well.
+
